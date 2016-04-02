@@ -1,0 +1,31 @@
+{
+  "intents": [
+    {
+      "intent": "SourceIntent",
+      "slots": [
+        {
+          "name": "Source",
+          "type": "LIST_OF_SOURCES"
+        }
+      ]
+    },
+    {
+      "intent": "PowerIntent",
+      "slots": [
+        {
+          "name": "State",
+          "type": "POWER_STATES"
+        }
+      ]
+    },
+    {
+      "intent": "LateNightIntent",
+      "slots": [
+        {
+          "name": "Level",
+          "type": "LATE_NIGHT_LEVELS"
+        }
+      ]
+    }
+  ]
+}

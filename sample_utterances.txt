@@ -1,0 +1,34 @@
+set source to pc
+set source to game
+set source to video one
+set source to blue ray
+set source to bd
+set source to game
+change source to aux
+change source to game
+turn on
+turn off
+turn the volume up
+turn the volume down
+set to standby
+turn late night on
+turn late night to low
+turn late night to high
+turn late night mode on
+turn late night mode to low
+turn late night mode to high
+set late night off
+set late night to low
+set late night to high
+turn late night to low
+turn late night to high
+shut up
+quiet
+silence
+mute
+cram it
+start muting
+mute off
+turn mute off
+set mute off
+stop muting
