@@ -16,6 +16,9 @@ def main(receiver):
             message.delete()
         except:
             continue
+        finally:
+            if message:
+                message.delete()
 
 
 def goodbye(receiver):

@@ -5,6 +5,19 @@ import boto3
 
 SQS = boto3.resource('sqs')
 QUEUE = SQS.Queue('https://sqs.us-east-1.amazonaws.com/711570343235/alexa-onkyo')
+SOURCE_DICT = {
+    'aux': 'aux1',
+    'auxillary': 'aux1',
+    'off': 'standby',
+    'b.d.': 'bd',
+    'c.d.': 'tv',
+    'd.v.d.': 'bd',
+    'echo': 'pc',
+    'p.c.': 'pc',
+    't.v.': 'tv',
+    'u.s.b.': 'usb',
+    'network': 'net',
+}
 
 
 def lambda_handler(event, context):
@@ -29,6 +42,26 @@ def on_intent(intent_request, session):
     if intent_name == 'set':
         set_intent(intent)
 
+    return send_response()
+
 
 def set_intent(intent):
-    QUEUE.send_message(body='main.input-selector={}'.format(intent['slots']['Source']['value']))
+    source = intent['slots']['Source']['value'].lower()
+    source = SOURCE_DICT.get(source, source)
+    if source in ('on', 'standby'):
+        body = 'main.system-power={}'.format(source)
+    else:
+        body = 'main.input-selector={}'.format(source)
+    QUEUE.send_message(MessageBody=body)
+
+
+def send_response():
+    return {
+        'version': '1.0',
+        'response': {
+            'outputSpeech': {
+                'type': 'PlainText',
+                'text': 'ok'
+            }
+        }
+    }
